@@ -20,6 +20,7 @@ def analyze(request):
     # Get the Text
     text = request.GET.get('text', 'none')  # request.GET.get('name_value', 'default') will take the parameters
     removepunc = request.GET.get('removepunc', 'off')
+    upper = request.GET.get('toupper', 'off')
 
     analyzed_text = ''
 
@@ -27,12 +28,15 @@ def analyze(request):
     puncs = '''!()-[]{}:;'"\,<>./@#$%^&*`~'''
 
     # Analyze the Text - Logic
+
     if removepunc == 'on':
         for char in text:
             if char not in puncs:
                 analyzed_text += char
-    else:
-        analyzed_text = text
+    elif upper == 'on':
+        analyzed_text = ''
+        analyzed_text = text.upper()
+
 
     # for sending data to html file we always use dictionary
     params = {'text': text, 'analyzed_text': analyzed_text, 'puncstate':removepunc}
