@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyzing your text...</title>
+</head>
+<body>
+
+<h1>Your Analyzed Text</h1>
+
+{% if puncstate != 'on' %}
+
+<h4>You dont want to analyze..</h4>
+<p>
+    Your Text:<br>
+    {{ text }}
+</p>
+
+{% else %}
+<h4>You chose to analyze..</h4>
+<p>
+    Your Analyzed Text:<br>
+    {{ analyzed_text }}
+</p>
+
+{% endif %}
+
+</body>
+</html>
